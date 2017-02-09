@@ -1,0 +1,17 @@
+<% include ./partials/head %>
+<% include ./partials/nav %>
+<h1><%= song.title %></h1>
+<p><%= song.description %></p>
+<% var url = '/songs/' + song.id %>
+<form action=<%= url + '?_method=DELETE' %> method="POST">
+  <button class="btn">Delete</button>
+</form>
+
+<button class="btn" id="edit_button">Edit</button>
+<form id='edit' class="hide" action=<%= url + '?_method=PUT' %> method="POST">
+  <input id="title" name="title" value=<%= song.title %> />
+  <input id="description" name="description" value=<%= song.description %> />
+  <button id="cancel" class="btn" type="button">Cancel</button>
+  <button class="btn">Save</button>
+</form>
+<script src="../javascripts/main.js"></script>
